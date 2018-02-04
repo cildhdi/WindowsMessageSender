@@ -24,14 +24,14 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	int cx = GetSystemMetrics(SM_CXSCREEN), cy = GetSystemMetrics(SM_CYSCREEN);
 	int width = 400, height = 225;
 	pWnd = pui->AddWindow(L"WindowsMessageSender(author:cildhdi)", (cx - width) / 2, (cy - height) / 2, width, height);
-	pWnd->AddControl(KrLabel_t, L"ÔÚÏÂÃæ·Ö±ğÊäÈë´°¿ÚµÄÀàÃûºÍ±êÌâ£¨¿ÉÍ¨¹ıspy++»ñµÃ£©£º",10, 10 + pWnd->GetCaptionHeight(), 400, 25);
+	pWnd->AddControl(KrLabel_t, L"åœ¨ä¸‹é¢åˆ†åˆ«è¾“å…¥çª—å£çš„ç±»åå’Œæ ‡é¢˜ï¼ˆå¯é€šè¿‡spy++è·å¾—ï¼‰ï¼š",10, 10 + pWnd->GetCaptionHeight(), 400, 25);
 	pEdit_ClassName = dynamic_cast<KrEdit*>(pWnd->AddControl(KrEdit_t, L"", 10, 40 + pWnd->GetCaptionHeight(), 150, 25));
 	pEdit_WindowName = dynamic_cast<KrEdit*>(pWnd->AddControl(KrEdit_t, L"", 180, 40 + pWnd->GetCaptionHeight(), 150, 25));
-	pWnd->AddControl(KrLabel_t, L"ÊäÈëÏûÏ¢Ãû³Æ:", 10, 80 + pWnd->GetCaptionHeight(), 95, 25);
+	pWnd->AddControl(KrLabel_t, L"è¾“å…¥æ¶ˆæ¯åç§°:", 10, 80 + pWnd->GetCaptionHeight(), 95, 25);
 	pEdit_MsgInput = dynamic_cast<KrEdit*>(pWnd->AddControl(KrEdit_t, L"", 110, 80 + pWnd->GetCaptionHeight(), 150, 25));
 	pEdit_MsgInput->RegMsg(KM_TEXTCHANGE, reinterpret_cast<MSGPROC>(Edit_MsgInput_Change));
-	(pWnd->AddControl(KrLabel_t, L"ÏûÏ¢ÃèÊö:", 10, 120 + pWnd->GetCaptionHeight(), 100, 25))->SetLineAlignment(Gdiplus::StringAlignmentNear);
-	pLabel_MsgDescription = dynamic_cast<KrLabel*>(pWnd->AddControl(KrLabel_t, L":", 80, 120 + pWnd->GetCaptionHeight(), 400, 25));
+	(pWnd->AddControl(KrLabel_t, L"æ¶ˆæ¯æè¿°:", 10, 120 + pWnd->GetCaptionHeight(), 100, 25))->SetLineAlignment(Gdiplus::StringAlignmentNear);
+	pLabel_MsgDescription = dynamic_cast<KrLabel*>(pWnd->AddControl(KrLabel_t, L"", 80, 120 + pWnd->GetCaptionHeight(), 400, 25));
 	pLabel_MsgDescription->SetLineAlignment(Gdiplus::StringAlignmentNear);
 	pBtn_Send = dynamic_cast<KrButton*>(pWnd->AddControl(KrButton_t, L"Send", 300, 180, 80, 25));
 	pBtn_Send->RegMsg(KM_CLICK, reinterpret_cast<MSGPROC>(Btn_Send_Click));
@@ -57,7 +57,7 @@ void Edit_MsgInput_Change(KrMessageHandler* pKrMessageHandler, WPARAM wParam, LP
 	}
 	if (!bChanged)
 	{
-		pLabel_MsgDescription->SetName(L"Î´ÕÒµ½ÏûÏ¢£¡");
+		pLabel_MsgDescription->SetName(L"æœªæ‰¾åˆ°æ¶ˆæ¯ï¼");
 		delete pMsgNote;
 		pMsgNote = nullptr;
 	}
@@ -67,7 +67,7 @@ void Btn_Send_Click(KrMessageHandler* kmh, WPARAM wp, LPARAM lp)
 {
 	if (pMsgNote==nullptr)
 	{
-		::MessageBox(pWnd->GetHWND(), L"²»´æÔÚ´ËÏûÏ¢£¡", L"´íÎó:", MB_OK);
+		::MessageBox(pWnd->GetHWND(), L"ä¸å­˜åœ¨æ­¤æ¶ˆæ¯ï¼", L"é”™è¯¯:", MB_OK);
 		return;
 	} 
 	if (pEdit_ClassName != nullptr&&pEdit_WindowName != nullptr)
@@ -78,7 +78,7 @@ void Btn_Send_Click(KrMessageHandler* kmh, WPARAM wp, LPARAM lp)
 		}
 		else
 		{
-			::MessageBox(pWnd->GetHWND(), L"Î´ÕÒµ½´°¿Ú£¡", L"´íÎó:", MB_OK);
+			::MessageBox(pWnd->GetHWND(), L"æœªæ‰¾åˆ°çª—å£ï¼", L"é”™è¯¯:", MB_OK);
 		}
 	}
 }
